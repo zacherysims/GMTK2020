@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8744144929357445294}
   - component: {fileID: 8744144929357445293}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Eye (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 2338141863448982665}
   - component: {fileID: 974969226406747199}
   - component: {fileID: 6103030597441883871}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Follow Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -216,6 +216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2321d48dfd4fa34db132196ede6066b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreOnKill: 0
   speed: 2
 --- !u!1 &8744144930966768067
 GameObject:
@@ -227,7 +228,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8744144930966768066}
   - component: {fileID: 8744144930966768065}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}

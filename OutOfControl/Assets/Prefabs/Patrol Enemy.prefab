@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8194934046596133293}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GroundDetection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7780161149143882573}
   - component: {fileID: 7780161149143882574}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,7 +121,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7780161150756891169}
   - component: {fileID: 7780161150756891170}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Eye (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -205,7 +205,7 @@ GameObject:
   - component: {fileID: 4011132273264768277}
   - component: {fileID: 3662378156202010118}
   - component: {fileID: 2244507289562369712}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Patrol Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -291,6 +291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51dd233fe5b2e5c46909c332b7d4315e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreOnKill: 0
   speed: 3
   waitToDrop: 5
   groundDetection: {fileID: 8194934046596133293}
