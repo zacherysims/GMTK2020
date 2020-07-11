@@ -7,8 +7,10 @@ using UnityEngine.UI;
 public class UIController : MonoBehaviour
 {
     public Transform Player;
+    public GameObject floatingPoints;
 
     public Text scoreText;
+    [HideInInspector]
     public int score;
 
     public Slider confidenceSlider;
@@ -22,6 +24,8 @@ public class UIController : MonoBehaviour
     public void IncreaseScore(int points)
     {
         score += (int)(1 / confidenceSlider.value * points);
+        floatingPoints.GetComponentInChildren<TextMesh>().text = "+" + (int)(1 / confidenceSlider.value * points);
+        Instantiate(floatingPoints, new Vector3(-7f,5f), Quaternion.identity);
         confidenceSlider.value += 0.1f;
     }
 
