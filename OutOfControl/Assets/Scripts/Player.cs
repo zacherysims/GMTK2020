@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
 
     private IEnumerator ManageConfidence()
     {
-        for (; ; )
+        for (; ;)
         {
             confidenceLevel = uiController.confidenceSlider.value;
             yield return new WaitForSeconds(3.5f - confidenceLevel);
