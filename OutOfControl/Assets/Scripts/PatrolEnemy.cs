@@ -34,7 +34,7 @@ public class PatrolEnemy : Enemy
         RaycastHit2D groundInfo = Physics2D.Raycast(groundDetection.position, Vector2.down, distance);
         Debug.DrawRay(groundDetection.position, Vector2.down, Color.green);
 
-        if (groundInfo.collider == false)
+        if (groundInfo.collider == false || groundInfo.collider.gameObject.tag == "Enemy")
         {
             if (movingRight)
             {

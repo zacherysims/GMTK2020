@@ -6,7 +6,28 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public UIController uiController;
+
+    private float confidenceLevel;
     private bool canBeHit = true;
+
+    private void Start()
+    {
+        StartCoroutine(ManageConfidence());
+    }
+
+    private IEnumerator ManageConfidence()
+    {
+        for (; ; )
+        {
+            confidenceLevel = uiController.confidenceSlider.value;
+            yield return new WaitForSeconds(3.5f - confidenceLevel);
+            if (confidenceLevel > 0.5)
+            {
+                Debug.Log("shoot" + confidenceLevel);
+                GetComponent<PlayerShoot>().AutoShoot();
+            }
+        }
+    }
 
     //Detect if the player collides with an enemy
     private void OnCollisionEnter2D(Collision2D collision)
