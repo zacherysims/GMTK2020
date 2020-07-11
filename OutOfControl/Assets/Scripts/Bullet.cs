@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    private void OnCollisionEnter2D(Collision2D collision)
+    //Destroy a bullet if it exists for 3 seconds
+    private void Start()
     {
-        if (collision.gameObject.tag == "Player")
-            Debug.Log("Player");
+        Destroy(this.gameObject, 3f);
+    }
 
-        Destroy(this.gameObject);
+    //Allows bullets to pass through ground, but registers a hit on anything else
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag != "Ground")
+            Destroy(this.gameObject);
     }
 }

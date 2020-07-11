@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Used to check if the player is on the ground so you can't
+//just spam the jump button and fly away
 public class GroundChecker : MonoBehaviour
 {
     GameObject player;
