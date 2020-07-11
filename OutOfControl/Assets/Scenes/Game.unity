@@ -708,7 +708,9 @@ MonoBehaviour:
   player: {fileID: 483144452}
   gameOverPanel: {fileID: 1214809482}
   scoreText: {fileID: 1593756520}
+  highScoreText: {fileID: 2071638321}
   score: 0
+  highScore: 0
   confidenceSlider: {fileID: 1456500176}
 --- !u!1 &652828799
 GameObject:

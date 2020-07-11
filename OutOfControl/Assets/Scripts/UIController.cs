@@ -11,13 +11,18 @@ public class UIController : MonoBehaviour
     public GameObject gameOverPanel;
 
     public Text scoreText;
+    public Text highScoreText;
     [HideInInspector]
     public int score;
+    [HideInInspector]
+    public int highScore;
 
     public Slider confidenceSlider;
 
     private void Start()
     {
+        highScore = PlayerPrefs.GetInt("HighScore");
+        highScoreText.text = "High Score: " + highScore.ToString();
         Time.timeScale = 1f;
     }
 
@@ -42,6 +47,12 @@ public class UIController : MonoBehaviour
 
     public void GameOver()
     {
+        if (score > PlayerPrefs.GetInt("HighScore"))
+        {
+            highScoreText.text = "High Score: " + score.ToString();
+            PlayerPrefs.SetInt("HighScore", score);
+        }
+
         Destroy(player.gameObject);
         gameOverPanel.SetActive(true);
         Time.timeScale = 0f;
