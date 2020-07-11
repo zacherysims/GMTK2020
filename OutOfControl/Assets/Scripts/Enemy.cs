@@ -8,6 +8,9 @@ public class Enemy : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Bullet")
+        {
             Destroy(this.gameObject);
+            GameObject.Find("UI").GetComponent<UIController>().IncreaseScore();
+        }
     }
 }
