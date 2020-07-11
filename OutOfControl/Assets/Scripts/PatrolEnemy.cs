@@ -15,6 +15,7 @@ public class PatrolEnemy : Enemy
     //so that the enemy doesn't hand out on one platform forever
     private IEnumerator Start()
     {
+        scoreOnKill = 50;
         if (waitToDrop == 0)
             yield return null;
         else

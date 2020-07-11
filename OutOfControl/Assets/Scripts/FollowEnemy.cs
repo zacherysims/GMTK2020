@@ -10,6 +10,7 @@ public class FollowEnemy : Enemy
 
     private void Start()
     {
+        scoreOnKill = 100;
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
 

@@ -19,9 +19,9 @@ public class UIController : MonoBehaviour
         scoreText.text = "Score: " + score.ToString();
     }
 
-    public void IncreaseScore()
+    public void IncreaseScore(int points)
     {
-        score += (int)(1 / confidenceSlider.value * 100);
+        score += (int)(1 / confidenceSlider.value * points);
         confidenceSlider.value += 0.1f;
     }
 
