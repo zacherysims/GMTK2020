@@ -435,6 +435,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   isGrounded: 0
+  leftConstraint: 640
+  rightConstraint: 640
+  cam: {fileID: 0}
+  distanceZ: 0
 --- !u!50 &483144450
 Rigidbody2D:
   serializedVersion: 4
@@ -577,6 +581,7 @@ MonoBehaviour:
   firePoint: {fileID: 2145569729}
   bulletPrefab: {fileID: 4161906126850826511, guid: 69bdc939e37791243b76bff1d7c5e025,
     type: 3}
+  uiController: {fileID: 598345570}
 --- !u!114 &483144456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -705,10 +710,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a2f1ea591be55e4d8ce3fd97ba22c1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 483144452}
-  gameOverPanel: {fileID: 1214809482}
+  player: {fileID: 0}
+  gameOverPanel: {fileID: 0}
   scoreText: {fileID: 1593756520}
-  highScoreText: {fileID: 2071638321}
+  highScoreText: {fileID: 0}
   score: 0
   highScore: 0
   confidenceSlider: {fileID: 1456500176}
