@@ -39,7 +39,7 @@ public class BouncingEnemy : Enemy
     {
         if (m_is_grounded && Time.time - m_grounded_time > m_timeout)
         {
-            m_phys.AddForce(transform.up * m_thrust, ForceMode2D.Impulse);
+            m_phys.AddForce(transform.up * m_thrust + (m_thrust * 0.5f * transform.right), ForceMode2D.Impulse);
         }
     }
 }
