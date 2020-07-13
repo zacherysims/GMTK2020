@@ -1,48 +1,61 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float moveSpeed = 5f;
-    public bool isGrounded = false;
-    public float leftConstraint = Screen.width;
-    public float rightConstraint = Screen.width;
-    public Camera cam;
-    public float distanceZ;
+    public bool isGrounded;
+    
+    private const float MoveSpeed = 5f;
+    private float m_leftConstraint;
+    private float m_rightConstraint;
+    private float m_topConstraint;
+    private float m_bottomConstraint;
+    
+    private float m_distanceZ;
 
-    private Rigidbody2D rb;
+    private Camera m_cam;
+    private Rigidbody2D m_rb;
 
-    void Start()
+    public void Start()
     {
-        cam = Camera.main;
-        distanceZ = Mathf.Abs(cam.transform.position.z + transform.position.z);
-        leftConstraint = cam.ScreenToWorldPoint(new Vector3(0.0f, 0.0f, distanceZ)).x;
-        rightConstraint = cam.ScreenToWorldPoint(new Vector3(Screen.width, 0.0f, distanceZ)).x;
-        rb = gameObject.GetComponent<Rigidbody2D>();
+        m_cam = Camera.main;
+        if (m_cam != null)
+        {
+            m_distanceZ = Mathf.Abs(m_cam.transform.position.z + transform.position.z);
+            m_leftConstraint = m_cam.ScreenToWorldPoint(new Vector3(0.0f, 0.0f, m_distanceZ)).x;
+            m_rightConstraint = m_cam.ScreenToWorldPoint(new Vector3(Screen.width, 0.0f, m_distanceZ)).x;
+            m_bottomConstraint = m_cam.ScreenToWorldPoint(new Vector3(0.0f, 0.0f, m_distanceZ)).y;
+            m_topConstraint = m_cam.ScreenToWorldPoint(new Vector3(0.0f, Screen.height, m_distanceZ)).y;
+        }
+        m_rb = gameObject.GetComponent<Rigidbody2D>();
     }
 
-    void Update()
+    public void Update()
     {
-        if(transform.position.x < leftConstraint)
+        var pos = transform.position;
+        if(pos.x < m_leftConstraint)
         {
-            transform.position = new Vector3(rightConstraint, transform.position.y, transform.position.z);
+            transform.position = new Vector3(m_rightConstraint, pos.y , pos.z);
         }
 
-        if (transform.position.x > rightConstraint)
+        if (pos.x > m_rightConstraint)
         {
-            transform.position = new Vector3(leftConstraint, transform.position.y, transform.position.z);
+            transform.position = new Vector3(m_leftConstraint, pos.y, pos.z);
         }
 
-        Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0f, 0f);
-        transform.position += movement * Time.deltaTime * moveSpeed;
+        if (pos.y < m_bottomConstraint)
+        {
+            transform.position = new Vector3(m_topConstraint, pos.x, pos.y);
+        }
+
+        var movement = new Vector3(Input.GetAxis("Horizontal"), 0f, 0f);
+        transform.position += Time.deltaTime * MoveSpeed * movement;
 
         if (Input.GetButtonDown("Jump") && isGrounded)
             Jump();
     }
 
-    public void Jump()
+    private void Jump()
     {
-         rb.AddForce(new Vector3(0f, 7f), ForceMode2D.Impulse);
+         m_rb.AddForce(new Vector3(0f, 7f), ForceMode2D.Impulse);
     }
 }
